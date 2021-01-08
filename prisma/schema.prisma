@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Usuario {
+  idUsuario   Int        @default(autoincrement()) @id
+  usuario     String  
+  pass        String
+  matricula   Int         @unique
+}
+
+model Estacion {
+  idEstacion  Int         @default(autoincrement()) @id
+  nombre      String
+}
+
+model Bicicleta {
+  idBicicleta Int         @default(autoincrement()) @id
+  estado      String
+  Estacion    Estacion    @relation(fields: [estacion], references: [idEstacion])
+  estacion    Int
+}
+
+model Alquiler {
+  idAlquiler  Int         @default(autoincrement()) @id
+  usuario     Int       
+  bicicleta   Int       
+  fecha       DateTime    @default(now())
+  Bicicleta   Bicicleta   @relation(fields: [bicicleta], references: [idBicicleta])
+  Usuario     Usuario     @relation(fields: [usuario], references: [idUsuario])
+  estado      Boolean     @default(true)
+}
+
+model Reportar {
+  idReportar  Int         @default(autoincrement()) @id
+  usuario     Int       
+  bicicleta   Int       
+  fecha       DateTime  @ default(now())
+  Bicicleta   Bicicleta   @relation(fields: [bicicleta], references: [idBicicleta])
+  Usuario     Usuario     @relation(fields: [usuario], references: [idUsuario])
+  estado      Boolean     @default(true)
+}
+
+model Foro {
+  idForo      Int         @default(autoincrement()) @id
+  descripcion String?
+}
+
+model Informacion {
+  idInformacion Int       @default(autoincrement()) @id
+  titulo        String
+  contenido     String?
+  foro          Int
+  Foro          Foro      @relation(fields: [foro], references: [idForo])
+}
+
+model Publicacion {
+  idPublicacion Int       @default(autoincrement()) @id
+  fecha         DateTime  @default(now())
+  contenido     String?
+  foro          Int
+  usuario       Int
+  Foro          Foro      @relation(fields: [foro], references: [idForo])
+  Usuario       Usuario   @relation(fields: [usuario], references: [idUsuario])
+}
