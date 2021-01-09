@@ -32,6 +32,7 @@ CREATE TABLE `Alquiler` (
     `usuario` INT NOT NULL,
     `bicicleta` INT NOT NULL,
     `fecha` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `estado` BOOLEAN NOT NULL DEFAULT true,
 
     PRIMARY KEY (`idAlquiler`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -41,7 +42,9 @@ CREATE TABLE `Reportar` (
     `idReportar` INT NOT NULL AUTO_INCREMENT,
     `usuario` INT NOT NULL,
     `bicicleta` INT NOT NULL,
+    `contenido` VARCHAR(191),
     `fecha` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `estado` BOOLEAN NOT NULL DEFAULT true,
 
     PRIMARY KEY (`idReportar`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

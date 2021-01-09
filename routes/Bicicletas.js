@@ -13,4 +13,14 @@ router.post('/ingresarBicicleta', function(req, res, next) {
 
 router.get('/leerBicicleta', bicicletasController.showBicicleta);
 
+router.post('/actualizarBicicleta', function(req, res, next) {
+    bicicletasController.deleteBicicleta(req.body);
+    res.send('respond with a resource');
+});
+
+router.post('/eliminarBicicleta', function(req, res, next) {
+    bicicletasController.updateBicicleta(req.body);
+    res.send('respond with a resource');
+});
+
 module.exports = router;

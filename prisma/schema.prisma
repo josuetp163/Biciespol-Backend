@@ -43,6 +43,7 @@ model Reportar {
   idReportar  Int         @default(autoincrement()) @id
   usuario     Int       
   bicicleta   Int       
+  contenido   String?
   fecha       DateTime  @ default(now())
   Bicicleta   Bicicleta   @relation(fields: [bicicleta], references: [idBicicleta])
   Usuario     Usuario     @relation(fields: [usuario], references: [idUsuario])

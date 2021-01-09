@@ -13,26 +13,28 @@ async function createBicicleta(bici) {
 
 }
 
-async function showBicicleta() {
+async function showBicicleta(req,res) {
     prisma.bicicleta.findMany().then(data => {
         res.send(data)
     })
 }
 
-async function updateBicicleta(id, estado, estacion) {
+async function updateBicicleta(bici) {
     const bicicleta = await prisma.bicicleta.update({
-        where: { idBicicleta: id },
+        where: { idBicicleta: bici.id },
         data: {
-            estado: estado,
-            estacion: estacion,
+            estado: bici.estado,
+            Estacion: {
+                connect: {idEstacion: parseInt(bici.estacion,10)}
+            }
         },
     })
     console.log(bicicleta);
 }
 
-async function deleteBicicleta(id) {
+async function deleteBicicleta(bici) {
     await prisma.bicicleta.delete({
-        where: { idBicicleta: id }
+        where: { idBicicleta: parseInt(bici.idBicicleta,10)}
     })
 }
 
