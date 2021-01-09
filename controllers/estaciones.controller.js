@@ -1,16 +1,17 @@
 const prisma = require("../app.js").prisma;
 
-async function createEstacion() {
+async function createEstacion(nomb) {
     await prisma.estacion.create({
         data: {
-            nombre: 'ejemplo'
+            nombre: nomb
         }
-    }) 
+    })
 }
 
 async function showEstaciones() {
     const allEstaciones = await prisma.estacion.findMany();
     console.dir(allEstaciones, { depth: null });
+    return allEstaciones;
 }
 
 async function updateEstacion() {

@@ -7,13 +7,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/ingresarEstacion', function(req, res, next) {
-    estacionesController.createEstacion();
+    estacionesController.createEstacion(req.body);
     res.send('Añadida nueva estacion');
 });
 
 router.get('/leerEstaciones', function(req, res, next) {
-    estacionesController.showEstaciones();
-    res.send('Lectura de estaciones');
+    res.send(estacionesController.showEstaciones());
+    //res.send('Lectura de estaciones');
 });
 
 router.get('/actualizarEstaciones', function(req, res, next) {

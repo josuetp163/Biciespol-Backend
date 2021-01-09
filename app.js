@@ -1,12 +1,23 @@
+const {PrismaClient } = require('@prisma/client')
+exports.prisma = new PrismaClient()
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var mailRouter = require('./routes/mail');
+var AlquileresRouter = require('./routes/Alquileres');
+var BicicletaRouter = require('./routes/Bicicletas');
+var EstacionesRouter = require('./routes/Estaciones');
+var ForoRouter = require('./routes/Foros');
+var PublicacionesRouter = require('./routes/Publicaciones');
+var InformacionRouter = require('./routes/Informacion');
+var ReportesRouter = require('./routes/Reportes');
+var UsuariosRouter = require('./routes/Usuarios');
 
 var app = express();
 
@@ -35,7 +46,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/mail', mailRouter);
+app.use('/alquileres', AlquileresRouter);
+app.use('/bicicleta', BicicletaRouter);
+app.use('/estaciones', EstacionesRouter);
+app.use('/foro', ForoRouter);
+app.use('/publicaciones', PublicacionesRouter);
+app.use('/informacion', InformacionRouter);
+app.use('/reportes', ReportesRouter);
+app.use('/usuarios', UsuariosRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
