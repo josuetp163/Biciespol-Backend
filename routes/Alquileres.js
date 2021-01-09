@@ -11,6 +11,6 @@ router.get('/ingresarAlquiler', function(req, res, next) {
     res.send('respond with a resource');
 });
 
-router.get('/leerAlquileres', alquileresController.showAlquileres());
+router.get('/leerAlquileres', alquileresController.showAlquileres);
 
 module.exports = router;

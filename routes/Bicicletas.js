@@ -6,11 +6,11 @@ router.get('/', function(req, res, next) {
     res.send('respond with a resource');
 });
 
-router.get('/ingresarBicicleta', function(req, res, next) {
-    //bicicletasController.createBicicleta(req.body);
+router.post('/ingresarBicicleta', function(req, res, next) {
+    bicicletasController.createBicicleta(req.body);
     res.send('respond with a resource');
 });
 
-router.get('/leerBicicleta', bicicletasController.showBicicleta());
+router.get('/leerBicicleta', bicicletasController.showBicicleta);
 
 module.exports = router;

@@ -1,30 +1,34 @@
 const prisma = require("../app.js").prisma;
+const EstacionesController = require('../controllers/estaciones.controller.js');
 
-async function createBicicleta(estado, idEst) {
+async function createBicicleta(bici) {
     await prisma.bicicleta.create({
         data: {
-            estado: estado,
-            estacion: idEst
+            estado: bici.estado,
+            Estacion: {
+                connect: {idEstacion: parseInt(bici.estacion,10)}
+            }
         }
-    }) 
+    })
+
 }
 
 async function showBicicleta() {
-    prisma.bicicleta.findMany().then(data =>{
+    prisma.bicicleta.findMany().then(data => {
         res.send(data)
     })
 }
 
 async function updateBicicleta(id, estado, estacion) {
     const bicicleta = await prisma.bicicleta.update({
-      where: { idBicicleta: id },
-      data: { 
-          estado:  estado,
-          estacion: estacion  
+        where: { idBicicleta: id },
+        data: {
+            estado: estado,
+            estacion: estacion,
         },
     })
     console.log(bicicleta);
-  }
+}
 
 async function deleteBicicleta(id) {
     await prisma.bicicleta.delete({

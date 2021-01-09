@@ -11,6 +11,6 @@ router.get('/ingresarInformacionForo', function(req, res, next) {
     res.send('respond with a resource');
 });
 
-router.get('/leerInformacionForos', informacionController.showInfos());
+router.get('/leerInformacionForos', informacionController.showInfos);
 
 module.exports = router;

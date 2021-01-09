@@ -11,6 +11,6 @@ router.get('/ingresarUsuario', function(req, res, next) {
     res.send('respond with a resource');
 });
 
-router.get('/leerUsuario', usuariosController.showUsuarios());
+router.get('/leerUsuario', usuariosController.showUsuarios);
 
 module.exports = router;

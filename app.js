@@ -47,7 +47,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/alquileres', AlquileresRouter);
-app.use('/bicicleta', BicicletaRouter);
+app.use('/bicicletas', BicicletaRouter);
 app.use('/estaciones', EstacionesRouter);
 app.use('/foro', ForoRouter);
 app.use('/publicaciones', PublicacionesRouter);

@@ -11,6 +11,6 @@ router.get('/ingresarReporte', function(req, res, next) {
     res.send('respond with a resource');
 });
 
-router.get('/leerReportes', reporteController.showReportes());
+router.get('/leerReportes', reporteController.showReportes);
 
 module.exports = router;

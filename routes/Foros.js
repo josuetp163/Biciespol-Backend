@@ -11,6 +11,6 @@ router.get('/ingresarForo', function(req, res, next) {
     res.send('respond with a resource');
 });
 
-router.get('/leerForos', foroController.showForo());
+router.get('/leerForos', foroController.showForo);
 
 module.exports = router;

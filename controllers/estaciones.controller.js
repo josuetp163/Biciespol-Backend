@@ -14,7 +14,16 @@ async function showEstaciones(req,res) {
             res.send(data)
         })
     //console.dir(allEstaciones, { depth: null });
-    
+}
+
+async function findEstacion(idEst) {
+    //const allEstaciones = await prisma.estacion.findMany()
+        prisma.estacion.findMany({
+            where: { idEstacion: idEst }
+        }).then(data =>{
+            return data
+        })
+    //console.dir(allEstaciones, { depth: null });
 }
 
 async function updateEstacion(idEst, nom) {
@@ -35,3 +44,4 @@ module.exports.createEstacion = createEstacion;
 module.exports.showEstaciones = showEstaciones;
 module.exports.updateEstacion = updateEstacion;
 module.exports.deleteEstacion = deleteEstacion;
+module.exports.findEstacion = findEstacion;
