@@ -8,10 +8,13 @@ async function createEstacion(nomb) {
     })
 }
 
-async function showEstaciones() {
-    const allEstaciones = await prisma.estacion.findMany();
-    console.dir(allEstaciones, { depth: null });
-    return allEstaciones;
+async function showEstaciones(req,res) {
+    //const allEstaciones = await prisma.estacion.findMany()
+        prisma.estacion.findMany().then(data =>{
+            res.send(data)
+        })
+    //console.dir(allEstaciones, { depth: null });
+    
 }
 
 async function updateEstacion() {

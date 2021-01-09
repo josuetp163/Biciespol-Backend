@@ -11,10 +11,7 @@ router.get('/ingresarEstacion', function(req, res, next) {
     res.send('Añadida nueva estacion');
 });
 
-router.get('/leerEstaciones', function(req, res, next) {
-    res.send(estacionesController.showEstaciones());
-    //res.send('Lectura de estaciones');
-});
+router.get('/leerEstaciones', estacionesController.showEstaciones);
 
 router.get('/actualizarEstaciones', function(req, res, next) {
     estacionesController.updateEstacion();
