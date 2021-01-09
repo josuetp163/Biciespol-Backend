@@ -11,8 +11,9 @@ async function createInformacion(titulo, contenido, foro) {
 }
 
 async function showInfos() {
-    const allInfos = await prisma.informacion.findMany();
-    console.dir(allInfos, { depth: null });
+    prisma.informacion.findMany().then(data =>{
+        res.send(data)
+    })
 }
 
 async function updateInfo(id, titulo, contenido) {

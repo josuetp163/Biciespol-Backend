@@ -10,8 +10,9 @@ async function createAlquiler(usuario, bici) {
 }
 
 async function showAlquileres() {
-    const allAlquileres = await prisma.alquilar.findMany();
-    console.dir(allReportes, { depth: null });
+    prisma.alquiler.findMany().then(data =>{
+        res.send(data)
+    })
 }
 
 async function updateAlquiler(id) {

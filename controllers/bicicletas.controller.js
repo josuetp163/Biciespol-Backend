@@ -10,8 +10,9 @@ async function createBicicleta(estado, idEst) {
 }
 
 async function showBicicleta() {
-    const allBicicletas = await prisma.bicicleta.findMany();
-    console.dir(allBicicletas, { depth: null });
+    prisma.bicicleta.findMany().then(data =>{
+        res.send(data)
+    })
 }
 
 async function updateBicicleta(id, estado, estacion) {

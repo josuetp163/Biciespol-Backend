@@ -11,8 +11,9 @@ async function createPublicacion(contenido, foro, usuario) {
 }
 
 async function showPublicaciones() {
-    const allPublicaciones = await prisma.publicacion.findMany();
-    console.dir(allPublicaciones, { depth: null });
+    prisma.publicacion.findMany().then(data =>{
+        res.send(data)
+    })
 }
 
 async function updatePublicacion(id, contenido) {

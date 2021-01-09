@@ -11,8 +11,9 @@ async function createUsuario(nomUsuario, password, matricula) {
 }
 
 async function showUsuarios() {
-    const allUsuarios = await prisma.usuario.findMany();
-    console.dir(allUsuarios, { depth: null });
+    prisma.usuario.findMany().then(data =>{
+        res.send(data)
+    })
 }
 
 async function updateUsuario(id, password) {

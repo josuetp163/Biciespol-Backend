@@ -17,17 +17,17 @@ async function showEstaciones(req,res) {
     
 }
 
-async function updateEstacion() {
+async function updateEstacion(idEst, nom) {
     const estacion = await prisma.estacion.update({
-      where: { idEstacion: 1 },
-      data: { nombre: 'algo' },
+      where: { idEstacion: idEst },
+      data: { nombre: nom },
     })
     console.log(estacion);
   }
 
-async function deleteEstacion() {
-    const estacion = await prisma.estacion.delete({
-        where: { idEstacion: 1 }
+async function deleteEstacion(idEst) {
+    await prisma.estacion.delete({
+        where: { idEstacion: idEst }
     })
 }
 

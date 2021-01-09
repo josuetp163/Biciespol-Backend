@@ -10,8 +10,9 @@ async function createReporte(usuario, bici) {
 }
 
 async function showReportes() {
-    const allReportes = await prisma.reportar.findMany();
-    console.dir(allReportes, { depth: null });
+    prisma.reportar.findMany().then(data =>{
+        res.send(data)
+    })
 }
 
 async function updateReporte(id) {

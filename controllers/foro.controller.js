@@ -9,8 +9,9 @@ async function createForo(desc) {
 }
 
 async function showForos() {
-    const allForos = await prisma.foro.findMany();
-    console.dir(allForos, { depth: null });
+    prisma.foro.findMany().then(data =>{
+        res.send(data)
+    })
 }
 
 async function updateForo(id, desc) {
