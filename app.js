@@ -18,9 +18,11 @@ var PublicacionesRouter = require('./routes/Publicaciones');
 var InformacionRouter = require('./routes/Informacion');
 var ReportesRouter = require('./routes/Reportes');
 var UsuariosRouter = require('./routes/Usuarios');
+var MongoRouter = require('./routes/mongoReporte');
 
 var app = express();
 
+const nodb = require('./collections');
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
@@ -54,6 +56,7 @@ app.use('/publicaciones', PublicacionesRouter);
 app.use('/informacion', InformacionRouter);
 app.use('/reportes', ReportesRouter);
 app.use('/usuarios', UsuariosRouter);
+app.use('/mongo', MongoRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
