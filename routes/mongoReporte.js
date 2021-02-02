@@ -4,6 +4,8 @@ const mongoController = require('../controllers/mongo.controller.js');
 
 router.get('/showReportes', mongoController.findAllReportes);
 
-router.get('/newReporte', mongoController.createReporte);
+router.get('/showReportesBici', mongoController.findAllReporteBici);
+
+router.post('/newReporte', mongoController.createReporte);
 
 module.exports = router;
