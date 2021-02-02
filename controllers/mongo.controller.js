@@ -2,8 +2,7 @@ const reporte = require('../collections/reporte.model');
 
 exports.findAllReportes = (req, res) => {
     reporte.find({}, (err, docs) => {
-        res.send(docs)
-        res.semd("dow");
+        res.send(docs);
     })
 };
 

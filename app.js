@@ -20,9 +20,10 @@ var ReportesRouter = require('./routes/Reportes');
 var UsuariosRouter = require('./routes/Usuarios');
 var MongoRouter = require('./routes/mongoReporte');
 
+const nodb = require('./collections');
+
 var app = express();
 
-const nodb = require('./collections');
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
