@@ -9,7 +9,7 @@ async function createAlquiler(usuario, bici) {
     }) 
 }
 
-async function showAlquileres() {
+async function showAlquileres(req,res) {
     prisma.alquiler.findMany().then(data =>{
         res.send(data)
     })

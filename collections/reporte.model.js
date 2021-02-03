@@ -12,6 +12,9 @@ const ReporteSchema = new mongoose.Schema({
     },
     fecha: {
         type: String,
+    },
+    duracion: {
+        type: String
     }
 });
 

@@ -5,9 +5,8 @@ var nodemailer = require("nodemailer")
 
 /* GET home page. */
 router.post('/', function(req, res, next) {
-    console.log(req.body)
-    res.render('index', { title: 'Express' });
-    mail(req); 
+    mail(req);
+    res.send({"data":"enviado con exito"});
 });
 
 async function mail(req){

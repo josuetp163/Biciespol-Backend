@@ -21,7 +21,7 @@ async function showBicicleta(req,res) {
 
 async function updateBicicleta(bici) {
     const bicicleta = await prisma.bicicleta.update({
-        where: { idBicicleta: bici.id },
+        where: { idBicicleta: parseInt(bici.idBicicleta,10) },
         data: {
             estado: bici.estado,
             Estacion: {
