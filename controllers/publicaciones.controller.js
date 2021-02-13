@@ -1,11 +1,11 @@
 const prisma = require("../app.js").prisma;
 
-async function createPublicacion(contenido, foro, usuario) {
+async function createPublicacion(publicacion) {
     await prisma.publicacion.create({
         data: {
-            contenido: contenido,
-            foro: foro,
-            usuario: usuario   
+            contenido: publicacion.contenido,
+            foro: parseInt(publicacion.foro,10),
+            usuario: parseInt(publicacion.usuario,10)   
         }
     }) 
 }
@@ -16,19 +16,19 @@ async function showPublicaciones() {
     })
 }
 
-async function updatePublicacion(id, contenido) {
-    const publicacion = await prisma.publicacion.update({
-      where: { idPublicacion: id },
+async function updatePublicacion(publicacion) {
+    const publi = await prisma.publicacion.update({
+      where: { idPublicacion: parseInt(publicacion.id,10) },
       data: { 
-          contenido: contenido  
+          contenido: publicacion.contenido  
         },
     })
-    console.log(publicacion);
+    console.log(publi);
   }
 
-async function deletePublicacion(id) {
+async function deletePublicacion(publicacion) {
     await prisma.publicacion.delete({
-        where: { idPublicacion: id }
+        where: { idPublicacion: parseInt(publicacion.id,10) }
     })
 }
 

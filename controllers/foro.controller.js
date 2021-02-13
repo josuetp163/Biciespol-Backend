@@ -1,9 +1,9 @@
 const prisma = require("../app.js").prisma;
 
-async function createForo(desc) {
+async function createForo(foro) {
     await prisma.foro.create({
         data: {
-            descripcion: desc
+            descripcion: foro.desc
         }
     }) 
 }
@@ -14,19 +14,19 @@ async function showForos() {
     })
 }
 
-async function updateForo(id, desc) {
-    const foro = await prisma.foro.update({
-      where: { idForo: id },
+async function updateForo(foro) {
+    const fo = await prisma.foro.update({
+      where: { idForo: parseInt(foro.id,10) },
       data: { 
-          descripcion: desc  
+          descripcion: foro.desc  
         },
     })
-    console.log(foro);
+    console.log(fo);
   }
 
-async function deleteForo(id) {
+async function deleteForo(foro) {
     await prisma.foro.delete({
-        where: { idForo: id }
+        where: { idForo: parseInt(foro.id,10) }
     })
 }
 
